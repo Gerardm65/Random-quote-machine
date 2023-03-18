@@ -6,7 +6,6 @@ import {FaTwitter} from 'react-icons/fa'
 function App() {  
   let quotesDBUrl = 'https://dummyjson.com/quotes'
   
-  
 
  const [ quote, setQuote] = useState("start where you are. Use what you have. Do what you can.")
   const [author, setAuthor] = useState("Arthur Ashe")
@@ -32,31 +31,39 @@ setAuthor(quotes[randomNumber].author)
 setPreviousColor(currentColor);
 setCurrentColor(COLORS_ARRAY[randomNumber]);
 }
+let animation = {background: currentColor,
+  
+  transition: 'background 1s linear, color 1s linear',
+  animation:
+    previousColor !== null
+      ? 'colorChange 1s forwards'
+      : 'none',}
+      let animationMain = {
+        color: currentColor,
+        transition: 'color 1s linear, color 1s linear',
+        animation:
+          previousColor !== null
+            ? 'colorChange 1s forwards'
+            : 'none',}
 
    
   return (
     <div className="App">
       <header
         className="App-header"
-        style={{
-          background: currentColor,
-          color: currentColor,
-          transition: 'background 1s linear, color 1s linear',
-          animation:
-            previousColor !== null
-              ? 'colorChange 1s forwards'
-              : 'none',
-        }}
+        style={animation
+          
+        }
       >
-       <div id='quote-box' style={{  color: currentColor}}>
-        <p id='text' style={{  color: currentColor}}>
+       <div id='quote-box' style={animationMain}>
+        <p id='text' style={animationMain}>
           {quote}
         </p>
          <p id='author' >- {author}</p>
          <div className="buttons" >
-          <a id='tweet-quote' style={{backgroundColor: currentColor}} href={encodeURI(`http://www.twitter.com/intent/tweet?text=${quote} -${author}`)}><FaTwitter/></a>
+          <a id='tweet-quote' style={animation} href={encodeURI(`http://www.twitter.com/intent/tweet?text=${quote} -${author}`)}><FaTwitter/></a>
           
-         <button onClick={randomQuotes} id='new-quote' style={{backgroundColor: currentColor}}>
+         <button onClick={randomQuotes} id='new-quote' style={animation}>
           New quote
           </button>
           </div>
