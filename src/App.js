@@ -29,16 +29,11 @@ setQuote(quotes[randomNumber].quote)
 setAuthor(quotes[randomNumber].author)
 setAccentColor(COLORS_ARRAY[randomNumber])
 }
-let myStyle = {
-  backgroundColor: accentColor,
-  color: accentColor,
-  transition: '1s + ease'
 
-}
    
   return (
     <div className="App">
-      <header className="App-header" style={myStyle}>
+      <header className="App-header" style={{background: accentColor, color:accentColor}}>
        <div id='quote-box' style={{ color:accentColor}}>
         <p id='text' style={{ color:accentColor}}>
           {quote}
